@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="mappers">
+
+	<resultMap type="com.ando.example.model.Bet" id="betResultMap">
+		<id property="id" column="id" />
+		<result property="team1" column="team1" />
+		<result property="team2" column="team2" />
+		<result property="score" column="score" />
+		<result property="betDate" column="betdate" />
+	</resultMap>
+
+	<select id="findAllBet" resultMap="betResultMap">
+		SELECT * FROM bet
+	</select>
+
+	<select id="findBet" parameterType="int" resultMap="betResultMap">
+		SELECT * FROM bet where id=#{id}
+	</select>
+
+	<insert id="createBet" parameterType="map">
+		INSERT INTO
+		bet(id, team1, team2, score, betdate)
+		VALUES
+		(#{id},	#{team1}, #{team2}, #{score}, #{betdate});
+	</insert>
+
+	<delete id="deleteBet" parameterType="int">
+		DELETE FROM	bet	WHERE id = #{id}
+	</delete>
+
+	<update id="updateBet" parameterType="map">
+		UPDATE	bet set	team1=#{team1},	team2=#{team2}, score=#{score},	betdate=#{betdate}	where id = #{id}
+	</update>
+	
+	<select id="selectOneBet" parameterType="map" resultMap="betResultMap">
+		SELECT * FROM bet
+		<where>
+			<if test="team1 != null">
+				team1=#{team1}
+			</if>
+			<if test="team2 != null">
+				AND team2=#{team2} 
+			</if>
+			<if test="score != null">
+				AND score=#{score} 
+			</if>
+			<if test="betdate != null">
+				AND betdate=#{betdate} 
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectListBet" parameterType="map" resultMap="betResultMap">
+		SELECT * FROM bet
+		<where>
+			<if test="team1 != null">
+				team1=#{team1}
+			</if>
+			<if test="team2 != null">
+				AND team2=#{team2} 
+			</if>
+			<if test="score != null">
+				AND score=#{score} 
+			</if>
+			<if test="betdate != null">
+				AND betdate=#{betdate} 
+			</if>
+		</where>
+	</select>
+
+</mapper>
+

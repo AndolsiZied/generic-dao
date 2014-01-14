@@ -1,0 +1,21 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="betPu" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>com.ando.example.model.Bet</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<properties>
+			<property name="hibernate.connection.driver_class" value="${db.driver}"/>
+			<property name="hibernate.connection.url" value="${db.url}"/>
+			<property name="hibernate.connection.username" value="${db.username}" />
+			<property name="hibernate.connection.password" value="${db.password}" />
+			<property name="hibernate.dialect" value="${db.dialect}" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true"/>
+        	<property name="hibernate.format_sql" value="true"/>
+		</properties>
+	</persistence-unit>
+
+</persistence>

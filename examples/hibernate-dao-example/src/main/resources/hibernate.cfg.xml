@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">${db.driver}</property>
+		<property name="hibernate.connection.url">${db.url}</property>
+		<property name="hibernate.connection.username">${db.username}</property>
+		<property name="hibernate.connection.password">${db.password}</property>
+		<property name="hibernate.dialect">${db.dialect}</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<!-- <property name="current_session_context_class">thread</property> -->
+
+		<mapping class="com.ando.example.model.Bet" />
+	</session-factory>
+</hibernate-configuration>
